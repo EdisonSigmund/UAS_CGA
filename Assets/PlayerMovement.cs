@@ -15,7 +15,9 @@ public class PlayerMovement : MonoBehaviour {
         GameManager
     }
 
-    void FixedUpdate() {
+    void FixedUpdate() {}
+
+    void Update() {
         input = new Vector3 (input.GetAxisRaw ("Horizontal"), 0, input.GetAxisRaw ("Vertical"));
         if(rigidbody.velocity.magnitude < maxspeed)
         {
@@ -52,6 +54,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         Instantiate(deathParticies, transform.position, Quaternion.Euler(270,0,0));
         transform.position = spawn;
+        transform.position = spawn;
     }
-
 }
