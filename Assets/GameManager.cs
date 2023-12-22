@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour {
 
     void LoadNextLevel()
     {
+        Time.timeScale = 1f;
         if (currentLevel < 2)
         {
             currentLevel += 1;
@@ -110,6 +111,8 @@ public class GameManager : MonoBehaviour {
             if(Gui.Button(new Rect (winScreenRect.x + 20, winScreenRect.y + winScreenRect.height - 60, 100, 40), "Quit"))
             {
                 Application.LoadNextLevel("main_menu");
+                Time.timeScale = 1f;
+
             }
 
             Gui.Label(new Rect (winScreenRect.x + 20, winScreenRect.y + 40, 300, 50), currentScore.ToString() + " Score");
@@ -118,3 +121,4 @@ public class GameManager : MonoBehaviour {
         }
     }
 }
+

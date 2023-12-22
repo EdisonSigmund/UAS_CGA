@@ -1,19 +1,26 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour {
 
+public class Player : MonoBehaviour {
     public GameManager manager;
     public float moveSpeed;
     public GameObject  deathParticles;
+    public bool usesManager = true;
+
 
     private float maxSpeed = 5f;
     private Vector3 input;
     private Vector3 spawn;
 
+    public AudioClip[] audioClip;
+
     void Start () {
         spawn = transform.position;
-        manager = manager.GetComponent<GameManager>();
+        if (usesManager)
+        {
+            manager = manager.GetComponent<GameManager>();
+        }
     }
 
     void FixedUpdate () {
@@ -45,13 +52,26 @@ public class PlayerMovement : MonoBehaviour {
         }
         if (other.transform.tag == "Token")
         {
-            manager.AddToken();
-            Destroy(other.gameObject, 4f);
+            if (usesManager)
+            {
+                manager.tokenCount += 1;
+            }
+            
+            PlaySound(0);
+            Destroy(other.gameObject);
         }
         if (other.transform.tag == "Goal")
         {
+            PlaySound(1);
+            Time.timeScale = 0f;
             manager.CompleteLevel();
         }
+    }
+
+    void PlaySound (int clip)
+    {
+        audio.clip = audioClip[clip];
+        audio.Play ();
     }
     
     void Die()
@@ -60,5 +80,4 @@ public class PlayerMovement : MonoBehaviour {
         transform.position = spawn;
     }
 }
-
 
