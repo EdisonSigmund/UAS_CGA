@@ -37,18 +37,24 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (other.transform.tag == "Enemy")
         {
-            print("I hit enemy");
+            Die ();
+        }
+        if (other.transform.tag == "TrapCone")
+        {
             Die ();
         }
         if (other.transform.tag =="Goal")
         {
-            print("I hit goal");
             GameManager.CompleteLevel();
         }
     }
 
     void OnTriggerEnter (Collider other)
     {   
+        if (other.CompareTag("TrapCone"))
+        {
+            Die();
+        }
         if (other.transform.tag =="Enemy")
         {
             Die ();
