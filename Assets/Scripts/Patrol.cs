@@ -11,6 +11,7 @@ public class Patrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moveSpeed=1;
         transform.position = patrolPoints[0].position;
         currentPoint = 0;
     }
@@ -23,7 +24,7 @@ public class Patrol : MonoBehaviour
             currentPoint++;
         }
         
-        if (currentPoint > patrolPoints.Length)
+        if (currentPoint >= patrolPoints.Length)
         {
             currentPoint = 0;
         }

@@ -7,21 +7,26 @@ public class PlayerMovement : MonoBehaviour {
 
     private float maxSpeed = 5f;
     private Vector3 input;
-
     private Vector3 spawn;
+
 
     void Start () {
         spawn = transform.position;
-        GameManager;
+        moveSpeed = 2f;
     }
+ 
+
+    void Update () {
+        transform.Translate(moveSpeed*Input.GetAxis("Horizontal")*Time.deltaTime,0f,moveSpeed*Input.GetAxis("Vertical")*Time.deltaTime);    
+    }
+    
 
     void FixedUpdate() {
-        input = new Vector3 (input.GetAxisRaw ("Horizontal"), 0, input.GetAxisRaw ("Vertical"));
-        if(GetComponent<Rigidbody>().velocity.magnitude < maxspeed)
+        input = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
+        if(GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)
         {
             GetComponent<Rigidbody>().AddForce(input * moveSpeed);
         }
-
         if (transform.position.y < -2)
         {
             Die ();
@@ -32,11 +37,17 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (other.transform.tag == "Enemy")
         {
+            print("I hit enemy");
             Die ();
+        }
+        if (other.transform.tag =="Goal")
+        {
+            print("I hit goal");
+            GameManager.CompleteLevel();
         }
     }
 
-    void onTriggerEnter (Collider other)
+    void OnTriggerEnter (Collider other)
     {   
         if (other.transform.tag =="Enemy")
         {
@@ -50,8 +61,8 @@ public class PlayerMovement : MonoBehaviour {
 
     void Die()
     {
-        Instantiate(deathParticies, transform.position, Quaternion.Euler(270,0,0));
         transform.position = spawn;
+        Instantiate(deathParticies, transform.position, Quaternion.Euler(270,0,0));
     }
 
 }

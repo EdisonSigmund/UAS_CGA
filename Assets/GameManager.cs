@@ -49,9 +49,9 @@ public class GameManager : MonoBehaviour{
         GUI.skin = skin;
         if (startTime < 5f)
         {
-            skin.GetStyle("Timer").Normal.textColor = warningColorTimer;
+            skin.GetStyle("Timer").normal.textColor = warningColorTimer;
         } else {
-            skin.GetStyle("Timer").Normal.textColor = defaultColorTimer;
+            skin.GetStyle("Timer").normal.textColor = defaultColorTimer;
         }
         GUI.Label (timerRect, currentTime, skin.GetStyle ("Timer"));
     }
