@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  deathParticies: {fileID: 0}
+  deathParticies: {fileID: 5983872932426424398, guid: 833954f229fae33408f819eaa7a753fb, type: 3}
 --- !u!1 &1834152346
 GameObject:
   m_ObjectHideFlags: 0
