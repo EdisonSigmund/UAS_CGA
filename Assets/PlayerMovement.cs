@@ -1,32 +1,31 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
+
+    public GameManager manager;
     public float moveSpeed;
-    public GameObject deathParticies;
+    public GameObject  deathParticles;
 
-    private flcat maxSpeed = 5f;
+    private float maxSpeed = 5f;
     private Vector3 input;
-
     private Vector3 spawn;
 
     void Start () {
         spawn = transform.position;
-        GameManager
+        manager = manager.GetComponent<GameManager>();
     }
 
-    void FixedUpdate() {}
-
-    void Update() {
+    void FixedUpdate () {
         input = new Vector3 (input.GetAxisRaw ("Horizontal"), 0, input.GetAxisRaw ("Vertical"));
-        if(rigidbody.velocity.magnitude < maxspeed)
+        if (rigidbody.velocity.magnitude < maxSpeed)
         {
-            rigidbody.AddForce(input * moveSpeed);
+            rigidbody.AddRelativeForce(input * moveSpeed);
         }
 
-        if (transform.position.y < -2)
+        if (transform.position.y <-2)
         {
-            Die ();
+            Die();
         }
     }
 
@@ -34,26 +33,32 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (other.transform.tag == "Enemy")
         {
-            Die ();
+            Die();
         }
     }
 
-    void onTriggerEnter (Collider other)
-    {   
-        if (other.transform.tag =="Enemy")
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Enemy")
         {
-            Die ();
+            Die();
         }
-        if (other.transform.tag =="Goal")
+        if (other.transform.tag == "Token")
         {
-            GameManager.CompleteLevel();
+            manager.AddToken();
+            Destroy(other.gameObject, 4f);
+        }
+        if (other.transform.tag == "Goal")
+        {
+            manager.CompleteLevel();
         }
     }
-
+    
     void Die()
     {
-        Instantiate(deathParticies, transform.position, Quaternion.Euler(270,0,0));
-        transform.position = spawn;
+        Instantiate(deathParticles, transform.positionm, Quaternion.Euler(270, 0,0));
         transform.position = spawn;
     }
 }
+
+
