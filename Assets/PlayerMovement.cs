@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour {
         GameManager
     }
 
+    void FixedUpdate() {}
+
     void Update() {
         input = new Vector3 (input.GetAxisRaw ("Horizontal"), 0, input.GetAxisRaw ("Vertical"));
         if(rigidbody.velocity.magnitude < maxspeed)
@@ -37,7 +39,11 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void onTriggerEnter (Collider other)
-    {
+    {   
+        if (other.transform.tag =="Enemy")
+        {
+            Die ();
+        }
         if (other.transform.tag =="Goal")
         {
             GameManager.CompleteLevel();
@@ -47,7 +53,7 @@ public class PlayerMovement : MonoBehaviour {
     void Die()
     {
         Instantiate(deathParticies, transform.position, Quaternion.Euler(270,0,0));
-            transform.position = spawn;
+        transform.position = spawn;
+        transform.position = spawn;
     }
-
 }

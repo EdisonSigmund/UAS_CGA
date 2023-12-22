@@ -1,24 +1,60 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour{
-    public static int currenScore;
+    public static int currentScore;
     public static int highscore;
 
-    public static int currentLevel;
+    public static int currentLevel = 0;
     public static int unlockedLevel;
+    public Rect timerRect;
+    public Color warningColorTimer;
+    public Color defaultColorTimer;
 
-    void CompleteLevel()
+
+    public GUISkin skin;
+
+    public float startTime;
+    private string currentTime;
+
+    void Update()
     {
-        if (currentLevel !== 2)
+        startTime -= Time.deltaTime;
+        currentTime = string.Format("{0:0.0}", startTime,);
+        print (startTime <= 0);
         {
-            currentLevel += 1;
-            Application.LoadLevel(currentLevel + 1);
-        } else {
-            print ("You Win");
+            startTime = 0;
+            Application.LoadLevel(3);
         }
-    
     }
 
+
+    void start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public static void CompleteLevel()
+    {
+        if (currentLevel < 2)
+        {
+            currentLevel += 1;
+            Application.LoadLevel(currentLevel);
+        } else {
+            print ("You Win!");
+        }
+    }
+    void OnGUI ()
+    {
+        GUI.skin = skin;
+        if (startTime < 5f)
+        {
+            skin.GetStyle("Timer").Normal.textColor = warningColorTimer;
+        } else {
+            skin.GetStyle("Timer").Normal.textColor = defaultColorTimer;
+        }
+        GUI.Label (timerRect, currentTime, skin.GetStyle ("Timer"));
+    }
 }
+
+
