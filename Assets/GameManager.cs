@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour {
             {
                 Application.LoadNextLevel("main_menu");
                 Time.timeScale = 1f;
+
             }
 
             Gui.Label(new Rect (winScreenRect.x + 20, winScreenRect.y + 40, 300, 50), currentScore.ToString() + " Score");
@@ -120,3 +121,4 @@ public class GameManager : MonoBehaviour {
         }
     }
 }
+

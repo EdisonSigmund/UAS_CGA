@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
 
+public class Player : MonoBehaviour {
     public GameManager manager;
     public float moveSpeed;
     public GameObject  deathParticles;
     public bool usesManager = true;
+
 
     private float maxSpeed = 5f;
     private Vector3 input;
@@ -79,3 +80,4 @@ public class Player : MonoBehaviour {
         transform.position = spawn;
     }
 }
+
