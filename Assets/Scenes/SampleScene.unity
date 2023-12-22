@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 565325476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.43, z: -5.15}
+  m_LocalPosition: {x: 0.5, y: 0, z: -5.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -261,10 +261,9 @@ GameObject:
   - component: {fileID: 947580125}
   - component: {fileID: 947580124}
   - component: {fileID: 947580128}
-  - component: {fileID: 947580129}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,26 +363,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 947580123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eee564110d83774b8a368de3bc99c77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &947580129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 947580123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74c981853c30daf47afaa624b85d6d4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 39549a72777ace645b5e9024ae82ca37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   patrolPoints:
   - {fileID: 1956704172}
   - {fileID: 565325477}
-  - {fileID: 1956704172}
-  moveSpeed: 3
+  moveSpeed: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,12 +455,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2513423, y: -0, z: -0, w: 0.9678983}
-  m_LocalPosition: {x: 6.19, y: 5.36, z: -19.18}
+  m_LocalRotation: {x: 0.2513423, y: 0, z: 0, w: 0.9678983}
+  m_LocalPosition: {x: 0, y: 6.04, z: -13.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1677614614}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 29.11391, y: 0, z: 0}
 --- !u!1 &1087446078
 GameObject:
@@ -594,10 +580,10 @@ GameObject:
   - component: {fileID: 1677614612}
   - component: {fileID: 1677614611}
   - component: {fileID: 1677614615}
-  - component: {fileID: 1677614617}
+  - component: {fileID: 1677614616}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -682,11 +668,10 @@ Transform:
   m_GameObject: {fileID: 1677614610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.19, y: 0.68, z: 5.22}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 963194228}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1677614615
@@ -716,7 +701,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1677614617
+--- !u!114 &1677614616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -725,11 +710,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1677614610}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c056362cf2de64386c75d710b7dcfe, type: 3}
+  m_Script: {fileID: 11500000, guid: bbaf5a8c1fc70354ca09d3bfa9a68df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  deathParticies: {fileID: 0}
 --- !u!1 &1834152346
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +844,7 @@ Transform:
   m_GameObject: {fileID: 1956704171}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1, y: 0.43, z: -5.15}
+  m_LocalPosition: {x: -6.1, y: 0, z: -5.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -964,6 +948,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1834152350}
   - {fileID: 1677614614}
